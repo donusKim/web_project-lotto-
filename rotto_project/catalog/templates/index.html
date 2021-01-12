@@ -1,0 +1,13 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>도누스 로또</h1>
+  <p>도누의 로또 정보사이트에 오신걸 환영합니다! <em>김동우(26세, 서초구 거주)</em></p>
+  <h2>최근회차</h2>
+  <ul>
+    <li><strong>회차:</strong> {{ num_rounds }}회</li>
+    <li><strong>당첨번호:</strong> {{ winning_num }} + {{bonus_num}}</li>
+    <li><strong>1등 당첨금:</strong> {{ win_money_each }}원</li>
+
+  </ul>
+{% endblock %}

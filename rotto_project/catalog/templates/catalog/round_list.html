@@ -1,0 +1,38 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>회차별 정보</h1>
+  {% if round_list %}
+  <ul>
+    <table class = "table table-hover table-responsive">
+      <colgroup>
+        <col width="17%">
+        <col width="35%">
+        <col width="17%" span="2">
+        <col width="28%">
+      </colgroup>
+
+    <tr>
+      <th class="tg-21xh"> 회차 </th>
+      <th class="tg-21xh"> 당첨번호 </th>
+      <th class="tg-21xh"> 번호총합 </th>
+      <th class="tg-21xh"> 홀/짝 </th>
+      <th class="tg-21xh"> 1인당 당첨금액 </th>
+    </tr>
+    {% for round in round_list %}
+    <tr>
+      <td><a href="{{ round.get_absolute_url }}">{{ round.round_num }}회차</a></td>
+      <td>({{ round.first_win_num }}, {{ round.second_win_num }}, {{ round.third_win_num }}, {{ round.fourth_win_num }}
+  {{ round.fifth_win_num }},{{ round.sixth_win_num }})+{{ round.bonus_num }}</td>
+      <td>{{ round.get_num_sum }}</td>
+      <td>{{ round.get_oddity }}</td>
+      <td>{{ round.get_win_info.0.2 }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  </ul>
+  {% else %}
+    <p>There are no rounds in the library.</p>
+  {% endif %} 
+{% endblock %}
+

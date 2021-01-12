@@ -1,0 +1,55 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h2>{{ round.round_num }}회차</h2>
+
+    <table class = "table table-hover ">
+      <colgroup>
+        <col width="20%">
+        <col width="20" span="2">
+        <col width="10" span="5">
+        <col width="15%">
+      </colgroup>
+
+    <tr>
+      <th class="tg-21xh"> 당첨번호 </th>
+      <th class="tg-21xh"> 번호합 </th>
+      <th class="tg-21xh"> 홀/짝 </th>
+      <th class="tg-21xh"> 0~9 </th>
+      <th class="tg-21xh"> 10~19 </th>
+      <th class="tg-21xh"> 20~29 </th>
+      <th class="tg-21xh"> 30~39 </th>
+      <th class="tg-21xh"> 40~45 </th>
+      <th class="tg-21xh">보너스번호</th>
+    </tr>
+    <tr>
+      <td>{{ round.first_win_num }}, {{ round.second_win_num }}, {{ round.third_win_num }}, {{ round.fourth_win_num }}
+  {{ round.fifth_win_num }},{{ round.sixth_win_num }}</td>
+      <td>{{ round.get_num_sum }}</td>
+      <td>{{ round.get_oddity }}</td>
+      <td>{{ round.get_range_cnt.0 }}</td>
+      <td>{{ round.get_range_cnt.1 }}</td>
+      <td>{{ round.get_range_cnt.2 }}</td>
+      <td>{{ round.get_range_cnt.3 }}</td>
+      <td>{{ round.get_range_cnt.4 }}</td>
+      <td>{{ round.bonus_num }}</td>
+
+    </tr>
+  </table>
+<table class="table table-hover ">
+    <thead>
+        <th>등수</th>
+        <th>총 당첨금</th>
+        <th>1인당 당첨금</th>
+        <th>당첨 수</th>
+    </thead>
+    {% for info in round.get_win_info %}
+    <tbody>
+
+        <td>{{ info.0 }}등</td>
+            <td>{{ info.1 }}</td><td>{{ info.2 }}</td><td>{{ info.3 }}명</td>
+
+    </tbody>
+    {% endfor %}
+</table>
+{% endblock %}
